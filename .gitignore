@@ -1,0 +1,4 @@
+src/sanitized_tester
+src/tester
+*.so
+src/dist*
