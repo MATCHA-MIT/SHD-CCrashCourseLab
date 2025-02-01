@@ -5,7 +5,7 @@ ifdef SANITIZE
 	CFLAGS += -fsanitize=address -fsanitize=undefined
 endif
 
-.PHONY: check run sanitized-run
+.PHONY: check run sanitized-run clean
 
 check: shd-lib.c
 	$(CC) $(CFLAGS) -fPIC -shared -o libshd-lib.so $^ -fsanitize=address -fsanitize=undefined
@@ -21,3 +21,6 @@ sanitized-run: libshd-lib.so
 
 libshd-lib.so: shd-lib.c
 	$(CC) $(CFLAGS) -fPIC -shared -o $@ $^
+
+clean:
+	rm -f libshd-lib.so
